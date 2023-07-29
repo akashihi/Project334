@@ -82,7 +82,7 @@ Those operations only use stack registers and do not require any operands.
 * 11001100 - NOT. Applies bitwise NOT operation to the register `X` and stores result to `X`.
 * 11001101 - RET. Jumps to the latest address stored in the hardware call stack. 
 In case stack is empty CPU will halt.
-* 11001101 - CLR. Writes value 0 to the register `X`. As all zeroes are reserved for NOP, a separate command is required.
+* 11001110 - CLR. Writes value 0 to the register `X`. As all zeroes are reserved for NOP, a separate command is required.
 
 Instructions ADD, SUB, MUL, LSH, RSH, AND, OR, XOR, NOT copy operand from the `X` register to the `X_0` registers.
 
