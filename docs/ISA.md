@@ -101,18 +101,18 @@ parts: upper and lower nibbles of `X` separately.
 
 #### Register addressing commands
 
-* 0100rrrr - RVR. Copies value from the register rrrr to the register `X`. In case rrrr equals to 0000, nothing happens.
-* 0101rrrr - WVR. Copies value from the register `X` to the register rrrr. In case rrrr equals to 0000, nothing happens.
+* 1100rrrr - RVR. Copies value from the register rrrr to the register `X`. In case rrrr equals to 0000, nothing happens.
+* 1101rrrr - WVR. Copies value from the register `X` to the register rrrr. In case rrrr equals to 0000, nothing happens.
 * 1000rrrr - LD. Loads value from the memory at address in register rrrr to the register `X`. 
 * 1001rrrr - ST. Stores value from the register `X` to the memory at address in register rrrr.
 * 1010rrrr - JZ. Jumps to the address stored at register rrrr in case value of `X` is zero. 
 * 1011rrrr - JMP. Jumps to the address stored at register rrrr unconditionally. 
-* 1101rrrr - SUB. Jumps to the address stored at register rrrr unconditionally and stores *next* program counter value in the hardware call stack. 
+* 1111rrrr - CALL. Jumps to the address stored at register rrrr unconditionally and stores *next* program counter value in the hardware call stack. 
 * 1110rrrr - JGT. Jumps to the address stored at register rrrr in case value of `X` is greater than zero.
 
 For commands LD, ST, JZ, JMP, SUB, JGT when rrrr is equal to 0000, register `Y` is used as address source.
 
-For all commands in that section when registers R1..R5 are used as rrrr, value of those register will be automatically decremented after the operation.
+For all commands in that section, except RVR and WVR, when registers R1..R5 are used as rrrr, value of those register will be automatically decremented after the operation.
 Same way, when registers R10..R15 are used as rrrr, value of those register will be automatically incremented after the operation.
 
 Software engineer is required to manually track the amount of nested procedure call with SUB instruction and ensure that max four level are used.
