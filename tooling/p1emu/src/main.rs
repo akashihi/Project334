@@ -1,6 +1,6 @@
 use std::fs;
 use std::fs::File;
-use std::io::Read;
+use std::io::{Read, Write};
 use clap::{command, Arg};
 use anyhow::Result;
 use thiserror::Error;
@@ -32,6 +32,7 @@ fn main() {
     let matches = command!() // requires `cargo` feature
         .arg(Arg::new("program").required(true))
         .arg(Arg::new("ram"))
+        .arg(Arg::new("write").short('w'))
         .get_matches();
 
     // Load program and data snapshots
@@ -50,5 +51,12 @@ fn main() {
             Ok(_) => {}
             Err(e) => {println!("Stopping CPU due to: {}", e); break}
         }
+    }
+
+    if let Some(data_output_file) = matches.get_one::<String>("write") {
+        println!("Dumping memory to {}", data_output_file);
+        let mut file = fs::OpenOptions::new().create(true).write(true).truncate(true).open(data_output_file).unwrap();
+        file.write_all(&data_mem).unwrap();
+
     }
 }
