@@ -46,6 +46,9 @@ fn main() {
     // CPU interface
     let mut cpu = cpu::CPU::new();
     loop {
-        cpu.step(&prog_mem, &mut data_mem).unwrap();
+        match cpu.step(&prog_mem, &mut data_mem) {
+            Ok(_) => {}
+            Err(e) => {println!("Stopping CPU due to: {}", e); break}
+        }
     }
 }

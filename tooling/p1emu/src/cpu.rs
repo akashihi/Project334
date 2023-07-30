@@ -3,7 +3,7 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum CpuError {
-    #[error("CPU is stopped on NOP")]
+    #[error("NOP treated as stop condition")]
     NOP,
     #[error("Invalid opcode {0}")]
     InvalidOpcode(u8),
@@ -42,7 +42,7 @@ impl CPU {
 
     pub fn step(&mut self, prog_mem: &[u8], data_mem: &mut[u8]) -> Result<()> {
         // Fetch instruction
-        self.dump_state();
+        self.dump_state(data_mem);
         let opcode:u8 = prog_mem[self.pc as usize];
         print!("Opcode: {:08b}, Instruction: ", opcode);
 
@@ -100,8 +100,21 @@ impl CPU {
         Ok(())
     }
 
-    fn dump_state(&self) {
-        println!("PC: {:03}, X0: {:03}, X: {:03}, Y: {:03}, Z: {:03}, T: {:03}, S0: {:03}, S1: {:03}, S2: {:03}, S3: {:03}", self.pc, self.x0, self.x, self.y, self.z, self.t, self.stack[0], self.stack[1], self.stack[2], self.stack[3])
+    fn dump_state(&self, data_mem: &[u8]) {
+        println!("PC: {:03}, X0: {:03}, X: {:03}, Y: {:03}, Z: {:03}, T: {:03}, S0: {:03}, S1: {:03}, S2: {:03}, S3: {:03}", self.pc, self.x0, self.x, self.y, self.z, self.t, self.stack[0], self.stack[1], self.stack[2], self.stack[3]);
+        for i in 0..15 {
+            print!("R{}: {:03} ", i+1, self.registers[i])
+        }
+        println!();
+        print!("Output: ");
+        for i in 246..255 {
+            print!("{:03} ", data_mem[i])
+        }
+        print!(" : ");
+        for i in 246..255 {
+            print!("{} ", char::from_u32(data_mem[i] as u32).unwrap_or(' '));
+        }
+        println!();
     }
 
     // Instruction helpers
