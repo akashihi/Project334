@@ -258,13 +258,13 @@ impl CPU {
 
     fn lup(&mut self, operand: u8) -> Result<()> {
         println!("LUP {}", operand << 4);
-        self.x = self.x | (operand << 4);
+        self.x = (self.x & 0b00001111) | (operand << 4);
         Ok(())
     }
 
     fn pup(&mut self, operand: u8) -> Result<()> {
         println!("PUP {}", operand);
-        self.x = self.x | operand;
+        self.x = (self.x & 0b11110000) | operand;
         Ok(())
     }
 
