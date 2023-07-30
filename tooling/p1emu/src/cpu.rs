@@ -85,7 +85,7 @@ impl CPU {
             match op {
                 0b00000100 => self.lup(operand)?,
                 0b00000101 => self.pup(operand)?,
-                0b00001100 => self.rvr(operand)?,
+                0b00000110 => self.rvr(operand)?,
                 0b00001101 => self.wvr(operand)?,
                 0b00001000 => self.ld(operand, data_mem)?,
                 0b00001001 => self.st(operand, data_mem)?,
@@ -138,7 +138,7 @@ impl CPU {
             address = self.registers[reg] as usize;
             if operand>=1 && operand <=5 {
                 self.registers[reg] = self.registers[reg] - 1;
-            } else if operand>=10 && operand <= 15 {
+            } else if operand>=11 && operand <= 15 {
                 self.registers[reg] = self.registers[reg] + 1;
             }
         }
@@ -163,9 +163,9 @@ impl CPU {
     fn rts(&mut self) -> Result<()>{
         println!("RTS");
         let x = self.x;
-        self.z = self.t;
-        self.y = self.z;
         self.x = self.y;
+        self.y = self.z;
+        self.z = self.t;
         self.t = x;
         Ok(())
     }
@@ -192,7 +192,7 @@ impl CPU {
     }
 
     fn mul(&mut self) -> Result<()>{
-        println!("NUL (do NOT use!)");
+        println!("MUL (do NOT use!)");
         let (x,y) = (self.x, self.y);
         self.push_down(|| {x.wrapping_mul(y)});
         Ok(())
@@ -208,7 +208,7 @@ impl CPU {
     fn rsh(&mut self) -> Result<()>{
         println!("RSH");
         self.x0 = self.x;
-        self.x = self.x >> 1;
+        self.x = self.x << 1;
         Ok(())
     }
 
@@ -247,6 +247,7 @@ impl CPU {
         }
         self.pc = self.stack[self.stack_ptr - 1];
         self.stack[self.stack_ptr - 1] = 0;
+        self.stack_ptr = self.stack_ptr -1;
         Ok(())
     }
 
@@ -329,7 +330,7 @@ impl CPU {
     fn jgt(&mut self, operand: u8) -> Result<()> {
         println!("JGT {}", operand);
         let address = self.indirect_address(operand);
-        if (self.x & 0b10000000) >0 {
+        if (self.x & 0b10000000) == 0 {
             self.pc = address as u8;
         }
         Ok(())

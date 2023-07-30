@@ -57,7 +57,7 @@ fn main() {
     ]);
 
     let reg_ops: HashMap<&str, u8> = HashMap::from([
-        ("RVR",  0b1100_0000),
+        ("RVR",  0b0110_0000),
         ("WVR",  0b1101_0000),
         ("LD",   0b1000_0000),
         ("ST",   0b1001_0000),
@@ -68,6 +68,7 @@ fn main() {
     ]);
 
     let regs: HashMap<&str, u8> = HashMap::from([
+        ("Y",  0b0000_0000), 
         ("R1", 0b0000_0001),
         ("R2", 0b0000_0010),
         ("R3", 0b0000_0011),

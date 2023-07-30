@@ -1,0 +1,16 @@
+# Tests stack operations
+SET 2
+PTS
+SET 4
+PTS
+SET 8
+PTS
+SET 16 # Stack should be 16->8->4->2 (0 in x0)
+EXY # Stack should become 8->16->4->2 (0 in x0)
+RTS # Stack should become 16->4->2->8 (0 in x0)
+RTS # Stack should become 4->2->8->16 (0 in x0)
+EXY # Stack should become 2->4->8->16 (0 in x0) 
+ADD # Stack should become 6->8->16->16 (2 in x0)
+RPV # Stack should become 2->6->8->16 (2 in x0)
+ADD # Stack should become 8->8->16->16 (2 in x0)
+NOP

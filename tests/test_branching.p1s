@@ -1,0 +1,36 @@
+SET 4 # Overjump
+PTS   
+JMP Y 
+NOP   # This NOP
+SET 4 # Ensure JZ will not be taken
+JZ Y  
+SET 18 # Prepare series of CALL/RET
+WVR R6
+SET 20
+WVR R7
+SET 22
+WVR R8
+SET 24
+WVR R9
+CALL R6 # Run that series
+SET 25
+PTS
+JMP Y # Skip subprocedures calls
+CALL R7 # Subprocedure chain starts here
+RET
+CALL R8
+RET
+CALL R9
+RET
+RET # Ends here
+SET 29
+PTS
+JMP Y # Skip following NOP
+NOP
+SET 28
+PTS
+SET 1
+JGT Y
+CLR # Restart if JGT failed
+PTS
+JMP
