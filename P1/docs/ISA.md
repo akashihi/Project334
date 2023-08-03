@@ -80,7 +80,10 @@ Those operations only use stack registers and do not require any operands.
 * 11001010 - OR. Applies bitwise OR operation between registers `X` and `Y` and stores result to `X`.
 * 11001011 - XOR. Applies bitwise XOR operation between registers `X` and `Y` and stores result to `X`.
 * 11001100 - NOT. Applies bitwise NOT operation to the register `X` and stores result to `X`.
-* 11001101 - RET. Jumps to the latest address stored in the hardware call stack. 
+* 11001101 - RET. Jumps to the latest address stored in the hardware call stack.
+* 11001110 - CLR. Write `0` to register `X`.
+* 11001111 - POP. Pops the stack. Value of `X` disappears, value of `Y` is copied to `X`, value of `Z` is copied 
+                  to `Y` and value of `T` is copied to `Z`.
 In case stack is empty CPU will halt.
 * 11001110 - CLR. Writes value 0 to the register `X`. As all zeroes are reserved for NOP, a separate command is required.
 

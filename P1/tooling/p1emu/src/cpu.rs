@@ -72,6 +72,7 @@ impl CPU {
                 0b11001100 => self.not()?,
                 0b11001101 => self.ret()?,
                 0b11001110 => self.clr()?,
+                0b11001111 => self.pop()?,
                 _ => return Err(CpuError::InvalidOpcode(opcode).into())
             }
         } else if (opcode & 0b11000000) == 0 {
@@ -149,6 +150,14 @@ impl CPU {
     fn pts(&mut self) -> Result<()> {
         println!("PTS");
         self.push_up();
+        Ok(())
+    }
+
+    fn pop(&mut self) -> Result<()> {
+        println!("POP");
+        self.x = self.y;
+        self.y = self.z;
+        self.z = self.t;
         Ok(())
     }
 

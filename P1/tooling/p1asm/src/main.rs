@@ -54,6 +54,7 @@ fn main() {
         ("NOT", 0b1100_1100),
         ("RET", 0b1100_1101),
         ("CLR", 0b1100_1110),
+        ("POP", 0b1100_1111),
     ]);
 
     let reg_ops: HashMap<&str, u8> = HashMap::from([
@@ -102,54 +103,55 @@ fn main() {
             continue;
         }
         let mut operations = line.split_whitespace();
-        let instruction = operations.next().unwrap();
-
-        // Operand-less instructions
-        if let Some(opcode) = single_ops.get(instruction) {
-            output.push(*opcode);
-            println!("{} -> {:08b}", instruction, opcode);
-            continue
-        }
-
-        // Operands instructions
-        if let Some(opcode) = reg_ops.get(instruction) {
-            if let Some(reg) = operations.next() {
-                if let Some(reg_code) = regs.get(reg) {
-                    let opcode_with_reg = opcode | reg_code;
-                    output.push(opcode_with_reg);
-                    println!("{} {} -> {:08b}", instruction, reg, opcode_with_reg)
-                } else {
-                  panic!("Unknown register: {}", reg)
-                }
-            } else {
-                println!("{} -> {:08b}", instruction, opcode)
+        if let Some(instruction) = operations.next() {
+            // Operand-less instructions
+            if let Some(opcode) = single_ops.get(instruction) {
+                output.push(*opcode);
+                println!("{} -> {:08b}", instruction, opcode);
+                continue
             }
-            continue
-        }
 
-        // Nibble loading instructions
-        if instruction == "LUP" {
-            output.push(op_lup(instruction, &mut operations));
-        }
-        if instruction == "PUP" {
-            output.push(op_pup(instruction, &mut operations));
-        }
-
-        // SET shortcut for loading either a whole number or a pair of LUP/PUP
-        if instruction == "SET" {
-            if let Some(value) = operations.next().and_then(|s| s.parse::<u8>().ok()) {
-                if value > 0 && value < 64 {
-                    output.push(value);
-                    println!("{} {} -> {:08b}", instruction, value, value);
+            // Operands instructions
+            if let Some(opcode) = reg_ops.get(instruction) {
+                if let Some(reg) = operations.next() {
+                    if let Some(reg_code) = regs.get(reg) {
+                        let opcode_with_reg = opcode | reg_code;
+                        output.push(opcode_with_reg);
+                        println!("{} {} -> {:08b}", instruction, reg, opcode_with_reg)
+                    } else {
+                        panic!("Unknown register: {}", reg)
+                    }
                 } else {
-                    output.push(op_split("LUP", 0b0100_0000, value, upper_nibble));
-                    output.push(op_split("PUP", 0b0101_0000, value, lower_nibble));
+                    println!("{} -> {:08b}", instruction, opcode)
                 }
-            } else {
-                panic!("Invalid value for SET");
+                continue
             }
-            continue
+
+            // Nibble loading instructions
+            if instruction == "LUP" {
+                output.push(op_lup(instruction, &mut operations));
+            }
+            if instruction == "PUP" {
+                output.push(op_pup(instruction, &mut operations));
+            }
+
+            // SET shortcut for loading either a whole number or a pair of LUP/PUP
+            if instruction == "SET" {
+                if let Some(value) = operations.next().and_then(|s| s.parse::<u8>().ok()) {
+                    if value > 0 && value < 64 {
+                        output.push(value);
+                        println!("{} {} -> {:08b}", instruction, value, value);
+                    } else {
+                        output.push(op_split("LUP", 0b0100_0000, value, upper_nibble));
+                        output.push(op_split("PUP", 0b0101_0000, value, lower_nibble));
+                    }
+                } else {
+                    panic!("Invalid value for SET");
+                }
+                continue
+            }
         }
+
     }
 
     if output.len() > 256 {
