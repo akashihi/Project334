@@ -1,0 +1,269 @@
+# First matrix
+# 20 49 24
+# 03 08 23
+# 60 56 17
+# 
+# Second matrix
+# 51 11 01
+# 52 39 42
+# 07 16 14
+#
+# Multiplier 51
+#
+# Same test takes ~67ns on a modern PC
+SET 226 #0 (double command) Multiplication sub address
+#SET 226 #1 (double command)
+WVR R8  #2 store multiplication sub address to the R8
+SET 221 #3 constant multiplication sub address (double command)
+#SET 221#4 constant multiplication sub address (double command)
+WVR R9  #5 store constant multiplication sub address to the R9
+SET 20  #6 mat1[0][0]
+CALL R9 #7Multiply to 51
+SET 49  #8 mat[0][1]
+CALL R9 #9 #Multiply to 51
+SET 24  #10 mat[0][2]
+CALL R9 #11 #Multiply to 51
+SET 03  #12 mat[1][0]
+CALL R9 #13 #Multiply to 51
+SET 08  #14 mat[1][1]
+CALL R9 #15 #Multiply to 51
+SET 23  #16 mat[1][2]
+CALL R9 #17 #Multiply to 51
+SET 60  #18 mat[2][0]
+CALL R9 #19 #Multiply to 51
+SET 56  #20 mat[2][1]
+CALL R9 #21 #Multiply to 51
+SET 17  #22 mat[2][2]
+CALL R9 #23 #Multiply to 51. First matrix is multiplied now and stored starting from address 0
+SET 196 #24 Address of matrix multiplication helper (double command)
+#SET 196 #25
+WVR R9  #26 Safe to reuse R9 as constant multiplication isn't used anymore
+SET 9   #27 Matrix multiplication result address
+WVR R12 #28 Will use R12 as matrix multiplication result pointer
+CLR     #29 Write 0 to X
+WVR R11 #30 Will use for reading constant multiplication results from address 0
+LD R11  #31 Load left[0][0]
+WVR R2  #32 And store in R2
+LD R11  #33 Load left [0][1]
+WVR R3  #34 And store in R3
+LD R11  #35 Load left[0][2]
+WVR R4  #36 And store in R4
+SET 07  #37 Right[2][0]
+PTS     #38
+SET 52  #39 Right[1][0]
+PTS     #40
+SET 51  #41 Right[0][0]
+CALL R9 #42 Result for the [0][0]
+SET 16  #43 Right [2][1]
+PTS     #44
+SET 39  #45 Right [1][1]
+PTS     #46
+SET  9  #47 Right [0][1]
+CALL R9 #48 Result for the [0][1]
+SET 14  #49 Right [2][2]
+PTS     #50
+SET 42  #51 Right [1][2]
+PTS     #52
+SET 01  #53 Right [0][2]
+CALL R9 #54 Result for the [0][2]
+LD R11  #55 Load left[1][0]
+WVR R2  #56 And store in R2
+LD R11  #57 Load left [1][1]
+WVR R3  #58 And store in R3
+LD R11  #59 Load left[1][2]
+WVR R4  #60 And store in R4
+SET 07  #61 Right[2][0]
+PTS     #62
+SET 52  #63 Right[1][0]
+PTS     #64
+SET 51  #65 Right[0][0]
+CALL R9 #66 Result for the [1][0]
+SET 16  #67 Right [2][1]
+PTS     #68
+SET 39  #69 Right [1][1]
+PTS     #70
+SET  9  #71 Right [0][1]
+CALL R9 #72 Result for the [1][1]
+SET 14  #73 Right [2][2]
+PTS     #74
+SET 42  #75 Right [1][2]
+PTS     #76
+SET 01  #77 Right [0][2]
+CALL R9 #78 Result for the [1][2]
+LD R11  #79 Load left[2][0]
+WVR R2  #80 And store in R2
+LD R11  #81 Load left [2][1]
+WVR R3  #82 And store in R3
+LD R11  #83 Load left[2][2]
+WVR R4  #84 And store in R4
+SET 07  #85 Right[2][0]
+PTS     #86
+SET 52  #87 Right[1][0]
+PTS     #88
+SET 51  #89 Right[0][0]
+CALL R9 #90 Result for the [2][0]
+SET 16  #91 Right [2][1]
+PTS     #92
+SET 39  #93 Right [1][1]
+PTS     #94
+SET  9  #95 Right [0][1]
+CALL R9 #96 Result for the [2][1]
+SET 14  #97 Right [2][2]
+PTS     #98
+SET 42  #99 Right [1][2]
+PTS     #100
+SET 01  #101 Right [0][2]
+CALL R9 #102 Result for the [2][2]
+SET 12  #103 Matrix multiplication result address, pointing to the second row
+WVR R12  #104 R12 is again used as a pointer
+LD  R12 #105 [1][0]
+WVR R2  #106 goes to R2
+LD R12  #107 [1][1]
+WVR R3  #108 goes to R3
+LD R12  #109 [1][2]
+WVR R4  #110 goes to R4
+LD R12  #111 [2][0]
+WVR R13 #112 goes to R13
+LD R12  #113 [2][1]
+WVR R14 #114 goes to R14
+LD R12  #115 [2][2]
+WVR R15 #116 goes to R15
+SET 9   #117 Matrix multiplication result address
+WVR R12 #118
+RVR R3  #119 [1][1]
+PTS     #120
+RVR R15 #121 [2][2]
+CALL R8 #122 x->[1][1]*[2][2]
+WVR R9  #123 Not using it for a sub call anymore
+RVR R4  #124 [1][2]
+PTS     #125
+RVR R14 #126 [2][1]
+CALL R8 #127 x->[1][2]*[2][1]
+PTS     #128
+RVR R9  #129 x->[1][1]*[2][2],y->[1][2]*[2][1]
+SUB     #130 x->[1][1]*[2][2]-[1][2]*[2][1]
+PTS     #131
+LD R12  #132 [0][0]
+CALL R8 #133 x->first determinant term
+WVR R5  #134 that goes to R5
+RVR R2  #135 [1][0]
+PTS     #136
+RVR R15 #137 [2][2]
+CALL R8 #138 x->[1][0]*[2][2]
+WVR R9  #139
+RVR R4  #140 [1][2]
+PTS     #141
+RVR R13 #142 [2][0]
+CALL R8 #143 x->[1][2]*[2][0]
+PTS     #144
+RVR R9  #145 x->[1][0]*[2][2],y->[1][2]*[2][0]
+SUB     #146 x->[1][0]*[2][2]-[1][2]*[2][0]
+PTS     #147
+LD R12  #148 x->[0][1], y->[1][0]*[2][2]-[1][2]*[2][0]
+CALL R8 #149 x->second determinant term
+WVR R15 #150 that goes to R15, as we don't need [2][2] value anymore
+RVR R2  #151 [1][0]
+PTS     #152
+RVR R14 #153 [2][1]
+CALL R8 #154 x->[1][0]*[2][1]
+WVR R9  #155
+RVR R3  #156 [1][1]
+PTS     #157
+RVR R13 #158 [2][0]
+CALL R8 #159 x->[1][1]*[2][0]
+PTS     #160
+RVR R9  #161 x->[1][0]*[2][1], y->[1][1]*[2][0]
+SUB     #162 x->[1][0]*[2][1]-[1][1]*[2][0]
+PTS     #163
+LD R12   #164 [0][3]
+CALL R8 #165 x-> third determinant term
+PTS     #166
+RVR R15 #167 x-> second determinant term, y-> third determinant term
+PTS     #168
+RVR R5  #169 x->first determinant term, y-> second, z-> third
+SUB     #170
+SUB     #171 x-> determinant value
+PTS     #172
+SET 252 #173 last memory address (double command)
+#SET 255 #174
+EXY     #175 x->determinant, y->address
+ST Y    #176 write determinant to the IO region
+NOP     #177 We are done!
+NOP #178
+NOP #179
+NOP #180
+NOP #181
+NOP #182
+NOP #183
+NOP #184
+NOP #185
+NOP #186
+NOP #187
+NOP #188
+NOP #189
+NOP #190
+NOP #191
+NOP #192
+NOP #193
+NOP #194
+NOP #195
+WVR R15 #196 col2 -> R15. Matrix multiplication helper. Expects _row_ in regs R2..R4 and _column_ in X,Y,Z in opposite order(so element 0 in Z and elemnt 2 in X). Uses registers R13..R15, Stores result to R12
+POP     #197 Retrieve col1
+WVR R14 #198 col1 -> R14
+POP     #199 retrieve col0
+PTS     #200 x->col0,y->col0
+RVR R2  #201 x->row0,y->col0
+CALL R8 #202 x->row0*col0
+WVR R13 #203 Store row0*col0 to R13
+RVR R3  #204 row1
+PTS     #205
+RVR R14 #206 col1
+CALL R8 #207 x->row1*col1
+WVR R14 #208 Store row1*col1 to R14
+RVR R4  #209 row2
+PTS     #210
+RVR R15 #211 col2
+CALL R8 #212 x->row2*col2
+PTS     #213 x->row2*col2, y->row2*col2
+RVR R14 #214 x->row1*col1, y->row2*col2
+PTS     #215 x->row1*col1, y->row1*col1, z->row2*col2
+RVR R13 #216 x->row0*col0, y->row1*col1, z->row2*col2
+ADD     #217 those two adds provide result[0][0]
+ADD     #218
+ST R12  #219 which will be written to R12
+RET     #220 And set back to the call site
+PTS     #221 Constant multiplication helper. Multiplies number at X to constant 51 and stores at address pointed by R11 (need to be configured externally)
+SET 51  #222
+CALL R8 #223 actual multiplication
+ST R11  #224 Store to ram and increase address in R11
+RET     #225
+PTS     #226 Multiplication procedure. Operands are expected at X and Y, result will be returned at Y. Users registers R6,R1,R7. Stack: x->op1, y->op1, z->op2
+SET 253 #227 Exit address (double command) x->253, y->op1, z->op2
+#SET 253#228
+WVR R6  #229 Store exit address in R6 x->253, y->op1, z->op2
+SET 1   #230 x->1, y->op1, z->op2
+EXY     #231 x->op1, y->1, z->op2
+SUB     #232 x_0->op1, x->(op1-1), y->op2, z->op2
+WVR R1  #233 R1->(op1-1), x_0->op1, x->(op1-1), y->op2, z->op2
+EXY     #234 x_0->op1, x->op2, y->(op1-1), z->op2
+PTS     #235 x_0->op1, x->op2, y->-2, z->(op1-1)
+ADD     #236 X_0->op2, X->Result
+RPV     #237 X->op2, Y->Result
+PTS     #238 X->op2,y->op2, z->result
+RVR R1  #239 x->R1, y->op2,z->result
+PTS     #240 x->r1, y->r1, z->op2, t->result
+SET 1   #241 x->1, y->r1, z->op2, t->result
+EXY     #242 x->r1, y->1, z->op2, t->result
+SUB     #243 x->(r1-1), y->op2,z->result, t->result
+JZ R6   #244 Take branch if r1-1 is zero (multiplication is done) and go to the exit code
+WVR R1  #245 Store decremented multiplication coutner back
+POP     #246 x->op2, y->result
+PTS     #247 x->op2, y->op2, z-> result
+SET 235 #248 Loop address (double command) x->250, y->op2, z-> result
+#SET 236#249
+WVR R7  #250 # Store jump address to the R7
+POP     #251 x->op2, y->result
+JMP R7  #252 next iteration
+POP     #253 retrieve result from z
+POP     #254 retrieve result from y
+RET     #255 return to the call site
