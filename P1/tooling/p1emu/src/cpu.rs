@@ -108,11 +108,11 @@ impl CPU {
         }
         println!();
         print!("Output: ");
-        for i in 246..255 {
+        for i in 246..=255 {
             print!("{:03} ", data_mem[i])
         }
         print!(" : ");
-        for i in 246..255 {
+        for i in 246..=255 {
             print!("{} ", char::from_u32(data_mem[i] as u32).unwrap_or(' '));
         }
         println!();
