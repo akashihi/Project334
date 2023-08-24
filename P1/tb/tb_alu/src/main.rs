@@ -16,7 +16,7 @@ fn op_gen(opcode: u8, operands: Vec<(u8,u8)>, op: impl Fn(u8, u8) -> u8) {
 }
 
 fn main() {
-    println!("OP[3] X_IN[8] Y[8] X_OUT[8]");
+    println!("OP[3] X_OUT[8] Y[8] X_IN[8]");
     op_gen(0b000, binary_op(), |a,b| a.overflowing_add(b).0);
     op_gen(0b001, binary_op(), |a,b| a.overflowing_sub(b).0);
     op_gen(0b100, binary_op(), |a,b| a.bitxor(b));
