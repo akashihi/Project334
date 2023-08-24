@@ -210,14 +210,14 @@ impl CPU {
     fn lsh(&mut self) -> Result<()>{
         println!("LSH");
         self.x0 = self.x;
-        self.x = self.x >> 1;
+        self.x = self.x << 1;
         Ok(())
     }
 
     fn rsh(&mut self) -> Result<()>{
         println!("RSH");
         self.x0 = self.x;
-        self.x = self.x << 1;
+        self.x = self.x >> 1;
         Ok(())
     }
 
