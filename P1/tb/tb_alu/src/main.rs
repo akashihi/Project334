@@ -16,13 +16,13 @@ fn op_gen(opcode: u8, operands: Vec<(u8,u8)>, op: impl Fn(u8, u8) -> u8) {
 }
 
 fn main() {
-    println!("OP[3] X_OUT[8] Y[8] X_IN[8]");
-    op_gen(0b000, binary_op(), |a,b| a.overflowing_add(b).0);
-    op_gen(0b001, binary_op(), |a,b| a.overflowing_sub(b).0);
-    op_gen(0b100, binary_op(), |a,b| a.bitxor(b));
-    op_gen(0b110, binary_op(), |a,b| a.bitand(b));
-    op_gen(0b111, binary_op(), |a,b| a.bitor(b));
-    op_gen(0b011, unary_op(), |a,_| a.shl(1));
-    op_gen(0b010, unary_op(), |a,_| a.shr(1));
-    op_gen(0b101, unary_op(), |a,_| a.not());
+    println!("OP[4] X_OUT[8] Y[8] X_IN[8]");
+    op_gen(0b1000, binary_op(), |a,b| a.overflowing_add(b).0);
+    op_gen(0b1001, binary_op(), |a,b| a.overflowing_sub(b).0);
+    op_gen(0b1100, binary_op(), |a,b| a.bitxor(b));
+    op_gen(0b1110, binary_op(), |a,b| a.bitand(b));
+    op_gen(0b1111, binary_op(), |a,b| a.bitor(b));
+    op_gen(0b1011, unary_op(), |a,_| a.shl(1));
+    op_gen(0b1010, unary_op(), |a,_| a.shr(1));
+    op_gen(0b1101, unary_op(), |a,_| a.not());
 }
