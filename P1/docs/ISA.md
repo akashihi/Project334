@@ -63,29 +63,28 @@ There are five formats of the instructions:
 
 Those operations only use stack registers and do not require any operands.
 
-* 11000000 - PTS. Pushes the stack. `X` is copied to `Y`, `Y` is copied to `Z`,
-  `Z` is copied to `T`. Value of `T` disappears and value of `X_0` is untouched.
-* 11000001 - EXY. Exchanges values between registers `X` and `Y`. Value of `X_0` is untouched.
-* 11000010 - RTS. Rotates the stack. `T` is copied to `Z`, `Z` is copied to `Y`, 
-  `Y` is copied to `X`, `X` is copied to `T`. No value is erased, value of `X_0` is untouched.
-* 11000011 - RPV. Copies value from `X_0` to `X`, `X` is copied to `Y`, `Y` is copied
-  to `Z`, `Z` is copied to `T`, value of `T` is erased.
-* 11000100 - ADD. Adds value of `X` to the value of `Y` and stores result to the `X` register.
-* 11000101 - SUB. Subtracts value of `Y` from the value of `X` and stores result to the `X` register.
-* 11000110 - MUL. Muliplies value of `X` to the value of `Y` and stores result to the `X` register. 
-  This opcode is reserved for the future use.
-* 11000111 - LSH. Shift value of `X` one position to the left and stores result to `X`.
-* 11001000 - RSH. Shift value of `X` one position to the right and stores result to `X`.
-* 11001001 - AND. Applies bitwise AND operation between registers `X` and `Y` and stores result to `X`.
-* 11001010 - OR. Applies bitwise OR operation between registers `X` and `Y` and stores result to `X`.
-* 11001011 - XOR. Applies bitwise XOR operation between registers `X` and `Y` and stores result to `X`.
-* 11001100 - NOT. Applies bitwise NOT operation to the register `X` and stores result to `X`.
-* 11001101 - RET. Jumps to the latest address stored in the hardware call stack.
-* 11001110 - CLR. Write `0` to register `X`.
-* 11001111 - POP. Pops the stack. Value of `X` disappears, value of `Y` is copied to `X`, value of `Z` is copied 
-                  to `Y` and value of `T` is copied to `Z`.
+* 11000000 - ADD. Adds value of `X` to the value of `Y` and stores result to the `X` register.
+* 11000001 - SUB. Subtracts value of `Y` from the value of `X` and stores result to the `X` register.
+* 11000010 - RSH. Shift value of `X` one position to the right and stores result to `X`.
+* 11000011 - LSH. Shift value of `X` one position to the left and stores result to `X`.
+* 11000100 - XOR. Applies bitwise XOR operation between registers `X` and `Y` and stores result to `X`.
+* 11000101 - NOT. Applies bitwise NOT operation to the register `X` and stores result to `X`.
+* 11000110 - AND. Applies bitwise AND operation between registers `X` and `Y` and stores result to `X`.
+* 11000111 - OR. Applies bitwise OR operation between registers `X` and `Y` and stores result to `X`.
+* 11001000 - RET. Jumps to the latest address stored in the hardware call stack.
 In case stack is empty CPU will halt.
-* 11001110 - CLR. Writes value 0 to the register `X`. As all zeroes are reserved for NOP, a separate command is required.
+* 11001001 - CLR. Writes value 0 to the register `X`. As all zeroes are reserved for NOP, a separate command is required.
+* 11001010 - MUL. Muliplies value of `X` to the value of `Y` and stores result to the `X` register.
+  This opcode is reserved for the future use.
+* 11001011 - EXY. Exchanges values between registers `X` and `Y`. Value of `X_0` is untouched.
+* 11001100 - PTS. Pushes the stack. `X` is copied to `Y`, `Y` is copied to `Z`,
+  `Z` is copied to `T`. Value of `T` disappears and value of `X_0` is untouched.
+* 11001101 - RPV. Copies value from `X_0` to `X`, `X` is copied to `Y`, `Y` is copied
+  to `Z`, `Z` is copied to `T`, value of `T` is erased.
+* 11001110 - POP. Pops the stack. Value of `X` disappears, value of `Y` is copied to `X`, value of `Z` is copied
+  to `Y` and value of `T` is copied to `Z`.
+* 11001111 - RTS. Rotates the stack. `T` is copied to `Z`, `Z` is copied to `Y`,
+  `Y` is copied to `X`, `X` is copied to `T`. No value is erased, value of `X_0` is untouched.
 
 Instructions ADD, SUB, MUL, LSH, RSH, AND, OR, XOR, NOT copy operand from the `X` register to the `X_0` registers.
 
@@ -110,8 +109,8 @@ parts: upper and lower nibbles of `X` separately.
 * 1001rrrr - ST. Stores value from the register `X` to the memory at address in register rrrr.
 * 1010rrrr - JZ. Jumps to the address stored at register rrrr in case value of `X` is zero. 
 * 1011rrrr - JMP. Jumps to the address stored at register rrrr unconditionally. 
-* 1111rrrr - CALL. Jumps to the address stored at register rrrr unconditionally and stores *next* program counter value in the hardware call stack. 
 * 1110rrrr - JGT. Jumps to the address stored at register rrrr in case value of `X` is greater than zero.
+* 1111rrrr - CALL. Jumps to the address stored at register rrrr unconditionally and stores *next* program counter value in the hardware call stack.
 
 For commands LD, ST, JZ, JMP, SUB, JGT when rrrr is equal to 0000, register `Y` is used as address source.
 
