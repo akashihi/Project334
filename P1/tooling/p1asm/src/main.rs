@@ -39,7 +39,7 @@ fn op_pup(instruction: &str, operations: &mut SplitWhitespace) -> u8 {
 fn main() {
     let single_ops: HashMap<&str, u8> = HashMap::from([
         ("NOP", 0b0000_0000),
-        ("PTS", 0b1100_0000),
+        ("PTS", 0b1100_1100),
         ("EXY", 0b1100_1011),
         ("RTS", 0b1100_1111),
         ("RPV", 0b1100_1101),

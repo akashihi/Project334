@@ -57,22 +57,22 @@ impl CPU {
 
         if (opcode & 0b11110000) == 0b11000000 {
             match opcode {
-                0b11000000 => self.pts()?,
-                0b11000001 => self.exy()?,
-                0b11000010 => self.rts()?,
-                0b11000011 => self.rpv()?,
-                0b11000100 => self.add()?,
-                0b11000101 => self.sub()?,
-                0b11000110 => self.mul()?,
-                0b11000111 => self.lsh()?,
-                0b11001000 => self.rsh()?,
-                0b11001001 => self.and()?,
-                0b11001010 => self.or()?,
-                0b11001011 => self.xor()?,
-                0b11001100 => self.not()?,
-                0b11001101 => self.ret()?,
-                0b11001110 => self.clr()?,
-                0b11001111 => self.pop()?,
+                0b1100_1100 => self.pts()?,
+                0b1100_1011 => self.exy()?,
+                0b1100_1111 => self.rts()?,
+                0b1100_1101 => self.rpv()?,
+                0b1100_0000 => self.add()?,
+                0b1100_0001 => self.sub()?,
+                0b1100_1010 => self.mul()?,
+                0b1100_0011 => self.lsh()?,
+                0b1100_0010 => self.rsh()?,
+                0b1100_0110 => self.and()?,
+                0b1100_0111 => self.or()?,
+                0b1100_0100 => self.xor()?,
+                0b1100_0101 => self.not()?,
+                0b1100_1000 => self.ret()?,
+                0b1100_1001 => self.clr()?,
+                0b1100_1110 => self.pop()?,
                 _ => return Err(CpuError::InvalidOpcode(opcode).into())
             }
         } else if (opcode & 0b11000000) == 0 {
