@@ -81,9 +81,11 @@
     <comp lib="4" loc="(1330,530)" name="ROM">
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 8 8
-2 cc 4 cc 8 cc 10 c1
-c0 c0 c0 c3 cd c1 c2 c6
-cd cc 2 c7 cd c4 c9 c5
+4 cc b0 0 4 a0 12 d6
+14 d7 16 d8 18 d9 f6 19
+cc b0 f7 c8 f8 c8 f9 c8
+c8 1d cc b0 0 1c cc 1
+e0 c9 cc
 </a>
     </comp>
     <comp lib="4" loc="(1340,930)" name="RAM">
@@ -1884,7 +1886,6 @@ cd cc 2 c7 cd c4 c9 c5
     <comp loc="(1710,1960)" name="TheStack"/>
     <comp loc="(2180,1610)" name="RegisterFile"/>
     <comp loc="(2210,2070)" name="ALU"/>
-    <comp loc="(2220,2210)" name="BranchUnit"/>
     <comp loc="(2730,1460)" name="CallStack"/>
     <comp loc="(2760,2530)" name="Fetch"/>
     <comp loc="(3190,2140)" name="MemoryInterface"/>
@@ -1906,10 +1907,8 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(1810,1730)" to="(1810,1980)"/>
     <wire from="(1810,1730)" to="(1960,1730)"/>
     <wire from="(1810,1980)" to="(1810,2090)"/>
-    <wire from="(1810,2090)" to="(1810,2270)"/>
+    <wire from="(1810,2090)" to="(1810,2350)"/>
     <wire from="(1810,2090)" to="(1990,2090)"/>
-    <wire from="(1810,2270)" to="(1810,2350)"/>
-    <wire from="(1810,2270)" to="(2000,2270)"/>
     <wire from="(1810,2350)" to="(1810,3080)"/>
     <wire from="(1810,2350)" to="(2440,2350)"/>
     <wire from="(1810,3080)" to="(3100,3080)"/>
@@ -1917,15 +1916,6 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(1820,1750)" to="(1960,1750)"/>
     <wire from="(1820,1960)" to="(1820,2110)"/>
     <wire from="(1820,2110)" to="(1990,2110)"/>
-    <wire from="(1850,2230)" to="(1850,3840)"/>
-    <wire from="(1850,2230)" to="(2000,2230)"/>
-    <wire from="(1850,3840)" to="(3550,3840)"/>
-    <wire from="(1860,2210)" to="(1860,3820)"/>
-    <wire from="(1860,2210)" to="(2000,2210)"/>
-    <wire from="(1860,3820)" to="(3540,3820)"/>
-    <wire from="(1870,2250)" to="(1870,3800)"/>
-    <wire from="(1870,2250)" to="(2000,2250)"/>
-    <wire from="(1870,3800)" to="(3530,3800)"/>
     <wire from="(1880,1670)" to="(1880,3790)"/>
     <wire from="(1880,1670)" to="(1960,1670)"/>
     <wire from="(1880,3790)" to="(3520,3790)"/>
@@ -1937,19 +1927,19 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(2180,1610)" to="(2360,1610)"/>
     <wire from="(2180,1630)" to="(2280,1630)"/>
     <wire from="(2210,2070)" to="(2280,2070)"/>
-    <wire from="(2220,2210)" to="(2340,2210)"/>
     <wire from="(2280,1630)" to="(2280,2070)"/>
     <wire from="(2280,2070)" to="(2280,2390)"/>
     <wire from="(2280,2390)" to="(2280,2790)"/>
     <wire from="(2280,2790)" to="(3520,2790)"/>
-    <wire from="(2340,2210)" to="(2340,2630)"/>
-    <wire from="(2340,2630)" to="(2540,2630)"/>
     <wire from="(2360,1420)" to="(2360,1610)"/>
     <wire from="(2360,1420)" to="(2770,1420)"/>
     <wire from="(2360,1610)" to="(2360,2200)"/>
     <wire from="(2360,2200)" to="(2360,2650)"/>
     <wire from="(2360,2200)" to="(2970,2200)"/>
     <wire from="(2360,2650)" to="(2540,2650)"/>
+    <wire from="(2400,2630)" to="(2400,3800)"/>
+    <wire from="(2400,2630)" to="(2540,2630)"/>
+    <wire from="(2400,3800)" to="(3530,3800)"/>
     <wire from="(2410,1090)" to="(2410,1520)"/>
     <wire from="(2410,1090)" to="(3920,1090)"/>
     <wire from="(2410,1520)" to="(2510,1520)"/>
@@ -1966,7 +1956,7 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(2460,2590)" to="(2540,2590)"/>
     <wire from="(2480,1540)" to="(2480,1930)"/>
     <wire from="(2480,1540)" to="(2510,1540)"/>
-    <wire from="(2480,1930)" to="(2850,1930)"/>
+    <wire from="(2480,1930)" to="(2760,1930)"/>
     <wire from="(2480,2610)" to="(2480,2750)"/>
     <wire from="(2480,2610)" to="(2540,2610)"/>
     <wire from="(2480,2750)" to="(3540,2750)"/>
@@ -1975,6 +1965,7 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(2490,2570)" to="(2540,2570)"/>
     <wire from="(2730,1460)" to="(2830,1460)"/>
     <wire from="(2730,1480)" to="(2770,1480)"/>
+    <wire from="(2760,1930)" to="(2760,2180)"/>
     <wire from="(2760,2180)" to="(2760,2530)"/>
     <wire from="(2760,2180)" to="(2970,2180)"/>
     <wire from="(2760,2550)" to="(2850,2550)"/>
@@ -1983,7 +1974,6 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(2810,2570)" to="(2810,3060)"/>
     <wire from="(2810,3060)" to="(3100,3060)"/>
     <wire from="(2830,1460)" to="(2830,1670)"/>
-    <wire from="(2850,1930)" to="(2850,2550)"/>
     <wire from="(2930,2100)" to="(2930,2160)"/>
     <wire from="(2930,2100)" to="(3580,2100)"/>
     <wire from="(2930,2160)" to="(2970,2160)"/>
@@ -2002,24 +1992,20 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(3320,3140)" to="(3520,3140)"/>
     <wire from="(3320,3160)" to="(3920,3160)"/>
     <wire from="(3320,3180)" to="(3560,3180)"/>
-    <wire from="(3320,3200)" to="(3550,3200)"/>
-    <wire from="(3320,3220)" to="(3540,3220)"/>
-    <wire from="(3320,3240)" to="(3530,3240)"/>
-    <wire from="(3320,3260)" to="(3520,3260)"/>
-    <wire from="(3320,3280)" to="(3510,3280)"/>
-    <wire from="(3320,3300)" to="(3580,3300)"/>
-    <wire from="(3320,3320)" to="(3500,3320)"/>
-    <wire from="(3500,3320)" to="(3500,3760)"/>
-    <wire from="(3510,3280)" to="(3510,3780)"/>
+    <wire from="(3320,3200)" to="(3530,3200)"/>
+    <wire from="(3320,3220)" to="(3520,3220)"/>
+    <wire from="(3320,3240)" to="(3510,3240)"/>
+    <wire from="(3320,3260)" to="(3580,3260)"/>
+    <wire from="(3320,3280)" to="(3500,3280)"/>
+    <wire from="(3500,3280)" to="(3500,3760)"/>
+    <wire from="(3510,3240)" to="(3510,3780)"/>
     <wire from="(3520,2160)" to="(3520,2790)"/>
     <wire from="(3520,2790)" to="(3520,3140)"/>
-    <wire from="(3520,3260)" to="(3520,3790)"/>
-    <wire from="(3530,3240)" to="(3530,3800)"/>
+    <wire from="(3520,3220)" to="(3520,3790)"/>
+    <wire from="(3530,3200)" to="(3530,3800)"/>
     <wire from="(3540,2140)" to="(3540,2750)"/>
-    <wire from="(3540,3220)" to="(3540,3820)"/>
-    <wire from="(3550,3200)" to="(3550,3840)"/>
     <wire from="(3560,1100)" to="(3560,3180)"/>
-    <wire from="(3580,2100)" to="(3580,3300)"/>
+    <wire from="(3580,2100)" to="(3580,3260)"/>
     <wire from="(3620,2240)" to="(3620,2300)"/>
     <wire from="(3620,2300)" to="(3750,2300)"/>
     <wire from="(3650,2220)" to="(3650,2260)"/>
@@ -2547,18 +2533,22 @@ cd cc 2 c7 cd c4 c9 c5
     <comp lib="4" loc="(1250,210)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="S0"/>
+      <a name="showInTab" val="true"/>
     </comp>
     <comp lib="4" loc="(1250,340)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="S1"/>
+      <a name="showInTab" val="true"/>
     </comp>
     <comp lib="4" loc="(1250,490)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="S2"/>
+      <a name="showInTab" val="true"/>
     </comp>
     <comp lib="4" loc="(1250,620)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="S3"/>
+      <a name="showInTab" val="true"/>
     </comp>
     <comp lib="4" loc="(1290,1090)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
@@ -2882,22 +2872,10 @@ cd cc 2 c7 cd c4 c9 c5
       <a name="label" val="CALL"/>
       <a name="output" val="true"/>
     </comp>
-    <comp lib="0" loc="(4230,3660)" name="Pin">
+    <comp lib="0" loc="(4240,3820)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
-      <a name="label" val="JGT"/>
-      <a name="output" val="true"/>
-    </comp>
-    <comp lib="0" loc="(4230,3770)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="JMP"/>
-      <a name="output" val="true"/>
-    </comp>
-    <comp lib="0" loc="(4230,3890)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="JZ"/>
+      <a name="label" val="SET_PC"/>
       <a name="output" val="true"/>
     </comp>
     <comp lib="0" loc="(4240,4000)" name="Pin">
@@ -3010,7 +2988,7 @@ cd cc 2 c7 cd c4 c9 c5
     <comp lib="1" loc="(2490,670)" name="AND Gate">
       <a name="label" val="STACK_OP"/>
     </comp>
-    <comp lib="1" loc="(2540,3380)" name="NAND Gate">
+    <comp lib="1" loc="(2540,3380)" name="NOR Gate">
       <a name="inputs" val="3"/>
     </comp>
     <comp lib="1" loc="(2660,3300)" name="AND Gate"/>
@@ -3023,6 +3001,9 @@ cd cc 2 c7 cd c4 c9 c5
     <comp lib="1" loc="(3920,2620)" name="OR Gate"/>
     <comp lib="1" loc="(4050,2600)" name="OR Gate"/>
     <comp lib="1" loc="(4090,4320)" name="OR Gate"/>
+    <comp lib="1" loc="(4140,3820)" name="OR Gate">
+      <a name="inputs" val="3"/>
+    </comp>
     <comp lib="1" loc="(4150,2420)" name="Controlled Buffer">
       <a name="width" val="8"/>
     </comp>
@@ -3039,8 +3020,12 @@ cd cc 2 c7 cd c4 c9 c5
     <comp lib="2" loc="(3960,2420)" name="Multiplexer">
       <a name="width" val="8"/>
     </comp>
+    <comp loc="(3490,3740)" name="BranchUnit"/>
     <wire from="(1110,1630)" to="(1350,1630)"/>
-    <wire from="(1180,2900)" to="(2170,2900)"/>
+    <wire from="(1180,2900)" to="(1300,2900)"/>
+    <wire from="(1300,2900)" to="(1300,4510)"/>
+    <wire from="(1300,2900)" to="(2170,2900)"/>
+    <wire from="(1300,4510)" to="(3220,4510)"/>
     <wire from="(1350,1630)" to="(1350,2250)"/>
     <wire from="(1350,1630)" to="(2690,1630)"/>
     <wire from="(1350,2250)" to="(1350,2440)"/>
@@ -3291,10 +3276,10 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(2140,950)" to="(2170,950)"/>
     <wire from="(2150,2680)" to="(2250,2680)"/>
     <wire from="(2170,270)" to="(4060,270)"/>
-    <wire from="(2170,3540)" to="(4230,3540)"/>
-    <wire from="(2170,3660)" to="(4230,3660)"/>
-    <wire from="(2170,3770)" to="(4230,3770)"/>
-    <wire from="(2170,3890)" to="(4230,3890)"/>
+    <wire from="(2170,3540)" to="(3820,3540)"/>
+    <wire from="(2170,3660)" to="(3100,3660)"/>
+    <wire from="(2170,3770)" to="(3130,3770)"/>
+    <wire from="(2170,3890)" to="(3140,3890)"/>
     <wire from="(2170,4000)" to="(2320,4000)"/>
     <wire from="(2170,4120)" to="(2350,4120)"/>
     <wire from="(2170,4230)" to="(3990,4230)"/>
@@ -3323,7 +3308,7 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(2250,340)" to="(2350,340)"/>
     <wire from="(2250,400)" to="(2250,440)"/>
     <wire from="(2250,440)" to="(2270,440)"/>
-    <wire from="(2270,830)" to="(4070,830)"/>
+    <wire from="(2270,830)" to="(3830,830)"/>
     <wire from="(2280,2540)" to="(2280,2970)"/>
     <wire from="(2280,2970)" to="(2970,2970)"/>
     <wire from="(2290,300)" to="(2290,400)"/>
@@ -3339,24 +3324,28 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(2350,3400)" to="(2350,4120)"/>
     <wire from="(2350,3400)" to="(2480,3400)"/>
     <wire from="(2350,4120)" to="(2920,4120)"/>
-    <wire from="(2380,2530)" to="(2380,2780)"/>
-    <wire from="(2380,2530)" to="(2830,2530)"/>
-    <wire from="(2380,2780)" to="(2830,2780)"/>
+    <wire from="(2380,2530)" to="(2380,2570)"/>
+    <wire from="(2380,2570)" to="(2380,2740)"/>
+    <wire from="(2380,2570)" to="(2830,2570)"/>
+    <wire from="(2380,2740)" to="(2830,2740)"/>
     <wire from="(2390,3100)" to="(2390,3360)"/>
     <wire from="(2390,3100)" to="(2910,3100)"/>
     <wire from="(2390,3360)" to="(2480,3360)"/>
     <wire from="(2390,650)" to="(2440,650)"/>
-    <wire from="(2400,2520)" to="(2400,2770)"/>
-    <wire from="(2400,2520)" to="(2830,2520)"/>
-    <wire from="(2400,2770)" to="(2830,2770)"/>
+    <wire from="(2400,2520)" to="(2400,2560)"/>
+    <wire from="(2400,2560)" to="(2400,2730)"/>
+    <wire from="(2400,2560)" to="(2830,2560)"/>
+    <wire from="(2400,2730)" to="(2830,2730)"/>
     <wire from="(2400,320)" to="(2440,320)"/>
     <wire from="(2400,420)" to="(2520,420)"/>
-    <wire from="(2420,2510)" to="(2420,2760)"/>
-    <wire from="(2420,2510)" to="(2830,2510)"/>
-    <wire from="(2420,2760)" to="(2830,2760)"/>
-    <wire from="(2440,2500)" to="(2440,2750)"/>
-    <wire from="(2440,2500)" to="(2830,2500)"/>
-    <wire from="(2440,2750)" to="(2830,2750)"/>
+    <wire from="(2420,2510)" to="(2420,2550)"/>
+    <wire from="(2420,2550)" to="(2420,2720)"/>
+    <wire from="(2420,2550)" to="(2830,2550)"/>
+    <wire from="(2420,2720)" to="(2830,2720)"/>
+    <wire from="(2440,2500)" to="(2440,2540)"/>
+    <wire from="(2440,2540)" to="(2440,2710)"/>
+    <wire from="(2440,2540)" to="(2830,2540)"/>
+    <wire from="(2440,2710)" to="(2830,2710)"/>
     <wire from="(2440,320)" to="(2440,370)"/>
     <wire from="(2440,370)" to="(3310,370)"/>
     <wire from="(2480,2290)" to="(2480,2380)"/>
@@ -3372,23 +3361,23 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(2610,2290)" to="(3410,2290)"/>
     <wire from="(2610,590)" to="(2610,2290)"/>
     <wire from="(2610,590)" to="(2970,590)"/>
-    <wire from="(2630,2710)" to="(2630,2820)"/>
-    <wire from="(2630,2710)" to="(2830,2710)"/>
-    <wire from="(2640,2720)" to="(2640,2830)"/>
-    <wire from="(2640,2720)" to="(2830,2720)"/>
-    <wire from="(2650,2730)" to="(2650,2840)"/>
-    <wire from="(2650,2730)" to="(2830,2730)"/>
-    <wire from="(2660,2740)" to="(2660,2850)"/>
-    <wire from="(2660,2740)" to="(2830,2740)"/>
+    <wire from="(2630,2500)" to="(2630,2820)"/>
+    <wire from="(2630,2500)" to="(2830,2500)"/>
+    <wire from="(2640,2510)" to="(2640,2830)"/>
+    <wire from="(2640,2510)" to="(2830,2510)"/>
+    <wire from="(2650,2520)" to="(2650,2840)"/>
+    <wire from="(2650,2520)" to="(2830,2520)"/>
+    <wire from="(2660,2530)" to="(2660,2850)"/>
+    <wire from="(2660,2530)" to="(2830,2530)"/>
     <wire from="(2660,3300)" to="(4200,3300)"/>
-    <wire from="(2670,2540)" to="(2670,2860)"/>
-    <wire from="(2670,2540)" to="(2830,2540)"/>
-    <wire from="(2680,2550)" to="(2680,2870)"/>
-    <wire from="(2680,2550)" to="(2830,2550)"/>
-    <wire from="(2690,2560)" to="(2690,2880)"/>
-    <wire from="(2690,2560)" to="(2830,2560)"/>
-    <wire from="(2700,2570)" to="(2700,2890)"/>
-    <wire from="(2700,2570)" to="(2830,2570)"/>
+    <wire from="(2670,2750)" to="(2670,2860)"/>
+    <wire from="(2670,2750)" to="(2830,2750)"/>
+    <wire from="(2680,2760)" to="(2680,2870)"/>
+    <wire from="(2680,2760)" to="(2830,2760)"/>
+    <wire from="(2690,2770)" to="(2690,2880)"/>
+    <wire from="(2690,2770)" to="(2830,2770)"/>
+    <wire from="(2700,2780)" to="(2700,2890)"/>
+    <wire from="(2700,2780)" to="(2830,2780)"/>
     <wire from="(2710,1550)" to="(2780,1550)"/>
     <wire from="(2710,1560)" to="(2780,1560)"/>
     <wire from="(2710,1570)" to="(2780,1570)"/>
@@ -3413,8 +3402,16 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(3020,600)" to="(3180,600)"/>
     <wire from="(3050,2580)" to="(4000,2580)"/>
     <wire from="(3050,970)" to="(3050,2580)"/>
+    <wire from="(3100,3660)" to="(3100,3760)"/>
+    <wire from="(3100,3760)" to="(3270,3760)"/>
+    <wire from="(3130,3740)" to="(3130,3770)"/>
+    <wire from="(3130,3740)" to="(3270,3740)"/>
+    <wire from="(3140,3780)" to="(3140,3890)"/>
+    <wire from="(3140,3780)" to="(3270,3780)"/>
     <wire from="(3180,360)" to="(3180,600)"/>
     <wire from="(3180,360)" to="(3350,360)"/>
+    <wire from="(3220,3800)" to="(3220,4510)"/>
+    <wire from="(3220,3800)" to="(3270,3800)"/>
     <wire from="(3240,380)" to="(3240,530)"/>
     <wire from="(3240,380)" to="(3410,380)"/>
     <wire from="(3240,530)" to="(3410,530)"/>
@@ -3428,13 +3425,19 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(3410,2600)" to="(3870,2600)"/>
     <wire from="(3450,390)" to="(3520,390)"/>
     <wire from="(3460,510)" to="(3550,510)"/>
+    <wire from="(3490,3740)" to="(3540,3740)"/>
     <wire from="(3520,330)" to="(3520,390)"/>
     <wire from="(3540,300)" to="(3580,300)"/>
     <wire from="(3540,310)" to="(3580,310)"/>
     <wire from="(3540,320)" to="(3580,320)"/>
+    <wire from="(3540,3740)" to="(3540,3840)"/>
+    <wire from="(3540,3840)" to="(4090,3840)"/>
     <wire from="(3550,330)" to="(3550,510)"/>
     <wire from="(3550,330)" to="(3580,330)"/>
     <wire from="(3600,340)" to="(3670,340)"/>
+    <wire from="(3620,2070)" to="(3620,3800)"/>
+    <wire from="(3620,2070)" to="(3830,2070)"/>
+    <wire from="(3620,3800)" to="(4090,3800)"/>
     <wire from="(3650,370)" to="(3650,740)"/>
     <wire from="(3650,370)" to="(3680,370)"/>
     <wire from="(3670,2250)" to="(3670,2480)"/>
@@ -3450,6 +3453,11 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(3790,2640)" to="(3870,2640)"/>
     <wire from="(3810,2410)" to="(3930,2410)"/>
     <wire from="(3810,2490)" to="(3860,2490)"/>
+    <wire from="(3820,3540)" to="(3820,3820)"/>
+    <wire from="(3820,3540)" to="(4230,3540)"/>
+    <wire from="(3820,3820)" to="(4090,3820)"/>
+    <wire from="(3830,830)" to="(3830,2070)"/>
+    <wire from="(3830,830)" to="(4070,830)"/>
     <wire from="(3860,2430)" to="(3860,2490)"/>
     <wire from="(3860,2430)" to="(3930,2430)"/>
     <wire from="(3920,2620)" to="(3940,2620)"/>
@@ -3462,6 +3470,7 @@ cd cc 2 c7 cd c4 c9 c5
     <wire from="(4050,2600)" to="(4140,2600)"/>
     <wire from="(4090,4320)" to="(4270,4320)"/>
     <wire from="(4140,2430)" to="(4140,2600)"/>
+    <wire from="(4140,3820)" to="(4240,3820)"/>
     <wire from="(4150,2420)" to="(4190,2420)"/>
   </circuit>
 </project>
