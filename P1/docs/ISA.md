@@ -10,17 +10,13 @@ are 8-bit wide.
 A Stack Machine is a computational model that uses a last-in, first-out stack to hold short-lived temporary values.
 P-1 provides software developer with four slots deep stack, plus one more slot for the previous operation value.
 
+|       |
 |-------|
 |   T   |
-|-------|
 |   Z   |
-|-------|
 |   Y   |
-|-------|
 |   X   |
-|-------|
 |  X_0  |
-|-------|
 
 Registers `X` and `Y` are primary operational registers, connected to the ALU, with `X` storing 
 *first* operand and `Y` storing second operand. On operation with `X` or `X`/`Y` registers 
