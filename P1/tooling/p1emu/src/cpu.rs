@@ -140,7 +140,7 @@ impl CPU {
             if operand>=1 && operand <=5 {
                 self.registers[reg] = self.registers[reg] - 1;
             } else if operand>=11 && operand <= 15 {
-                self.registers[reg] = self.registers[reg] + 1;
+                (self.registers[reg],_) = self.registers[reg].overflowing_add(1);
             }
         }
         address
