@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "libs")(type "KiCad")(uri "/home/chollya/Dropbox/Work/Project334/P1/pcb/libs")(options "")(descr ""))
+)

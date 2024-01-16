@@ -1,0 +1,7 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "41612")(type "KiCad")(uri "/home/chollya/Dropbox/Work/Project334/P1/pcb/libs/2023-12-26_19-38-36.kicad_sym")(options "")(descr ""))
+  (lib (name "yaaj_dcdc_stepdown_lm2596")(type "Legacy")(uri "/home/chollya/Dropbox/Work/Project334/P1/pcb/libs/yaaj_dcdc_stepdown_lm2596.lib")(options "")(descr ""))
+  (lib (name "NSI")(type "KiCad")(uri "/home/chollya/Dropbox/Work/Project334/P1/pcb/libs/2023-12-26_21-36-19.kicad_sym")(options "")(descr ""))
+  (lib (name "DC10EWA")(type "KiCad")(uri "/home/chollya/Dropbox/Work/Project334/P1/pcb/libs/DC10EWA.kicad_sym")(options "")(descr ""))
+)
