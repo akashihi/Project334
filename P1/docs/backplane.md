@@ -52,8 +52,8 @@ This section is dedicated to the ALU signals, such as X_IN,X_OUT etc
 * A10..A17 - Y_OUT bus
 * A18 - GND
 * A19..A26 - X_IN bus
-* A28 - GND
-* A29..A31 - ALU_OP
+* A27 - GND
+* A28..A31 - ALU_OP
 * A32 - +5V
 
 
@@ -71,7 +71,7 @@ This section handles control signals and external signals.
 * B15 - GND
 * B16..B23 - MEM_ADDRESS bus
 * B24 - GND
-* B26..B32 - INSTRUCTION bus
+* B25..B32 - INSTRUCTION bus
 
 
 ## Section C
@@ -100,5 +100,5 @@ Last sections transmits internal control signals and instruction related data
 
 ## Missing signals
 
-Signals `OP_ADDRESS[8]`, `OPCODE[8]`, `INSTRUCTION[8]`, `MEM_OP_DATA`, `SET_PC`, `MEM_OP_RW` are not exposed to the backplane. Three modules that generate or use those signals, `fetch`, `memoery interface` and `decode` work close to each other and will be located on a same PCB, 
+Signals `OP_ADDRESS[8]`, `OPCODE[8]`, `INSTRUCTION[8]`, `MEM_OP_DATA`, `SET_PC`, `MEM_OP_RW` are not exposed to the backplane. Three modules that generate or use those signals, `fetch`, `memory interface` and `decode` work close to each other and will be located on a same PCB, 
 thus removing the need to expose those signals
