@@ -531,28 +531,28 @@ d7 ce b7 ce ce c8
       <a name="label" val="OP"/>
       <a name="width" val="4"/>
     </comp>
-    <comp lib="8" loc="(129,650)" name="Text">
+    <comp lib="8" loc="(125,650)" name="Text">
       <a name="text" val="111 - OR"/>
     </comp>
-    <comp lib="8" loc="(134,520)" name="Text">
+    <comp lib="8" loc="(130,520)" name="Text">
       <a name="text" val="000 - Add"/>
     </comp>
-    <comp lib="8" loc="(134,540)" name="Text">
+    <comp lib="8" loc="(130,540)" name="Text">
       <a name="text" val="001 - Sub"/>
     </comp>
-    <comp lib="8" loc="(134,555)" name="Text">
-      <a name="text" val="011 - Lsh"/>
+    <comp lib="8" loc="(130,555)" name="Text">
+      <a name="text" val="011 - Rsh"/>
     </comp>
-    <comp lib="8" loc="(134,575)" name="Text">
-      <a name="text" val="010 - Rsh"/>
+    <comp lib="8" loc="(130,575)" name="Text">
+      <a name="text" val="010 - Lsh"/>
     </comp>
-    <comp lib="8" loc="(134,595)" name="Text">
+    <comp lib="8" loc="(130,595)" name="Text">
       <a name="text" val="100 - XOR"/>
     </comp>
-    <comp lib="8" loc="(134,610)" name="Text">
+    <comp lib="8" loc="(130,610)" name="Text">
       <a name="text" val="101 - NOT"/>
     </comp>
-    <comp lib="8" loc="(134,630)" name="Text">
+    <comp lib="8" loc="(130,630)" name="Text">
       <a name="text" val="110 - AND"/>
     </comp>
     <comp loc="(1170,380)" name="ALUUnaryOp"/>
@@ -631,9 +631,13 @@ d7 ce b7 ce ce c8
       <a name="width" val="8"/>
     </comp>
     <wire from="(1010,510)" to="(1010,580)"/>
-    <wire from="(1010,580)" to="(1180,580)"/>
-    <wire from="(1010,600)" to="(1010,690)"/>
-    <wire from="(1010,600)" to="(1180,600)"/>
+    <wire from="(1010,580)" to="(1090,580)"/>
+    <wire from="(1010,620)" to="(1010,690)"/>
+    <wire from="(1010,620)" to="(1140,620)"/>
+    <wire from="(1090,580)" to="(1090,600)"/>
+    <wire from="(1090,600)" to="(1180,600)"/>
+    <wire from="(1140,580)" to="(1140,620)"/>
+    <wire from="(1140,580)" to="(1180,580)"/>
     <wire from="(1190,610)" to="(1190,660)"/>
     <wire from="(1190,660)" to="(1240,660)"/>
     <wire from="(1210,590)" to="(1360,590)"/>
@@ -769,9 +773,6 @@ d7 ce b7 ce ce c8
       <a name="width" val="8"/>
     </comp>
     <comp lib="1" loc="(2170,2240)" name="Controlled Buffer">
-      <a name="width" val="8"/>
-    </comp>
-    <comp lib="1" loc="(2220,1560)" name="Controlled Buffer">
       <a name="width" val="8"/>
     </comp>
     <comp lib="1" loc="(370,2000)" name="Controlled Buffer">
@@ -925,8 +926,6 @@ d7 ce b7 ce ce c8
     <wire from="(1640,1290)" to="(1720,1290)"/>
     <wire from="(1670,1120)" to="(1670,1200)"/>
     <wire from="(1670,1200)" to="(1700,1200)"/>
-    <wire from="(1670,1430)" to="(1670,2000)"/>
-    <wire from="(1670,1430)" to="(2240,1430)"/>
     <wire from="(1670,2000)" to="(1670,2100)"/>
     <wire from="(1670,2100)" to="(1670,2370)"/>
     <wire from="(1670,2100)" to="(1980,2100)"/>
@@ -982,9 +981,7 @@ d7 ce b7 ce ce c8
     <wire from="(1960,1710)" to="(1990,1710)"/>
     <wire from="(1960,1790)" to="(2240,1790)"/>
     <wire from="(1980,1040)" to="(1980,1080)"/>
-    <wire from="(1980,1080)" to="(1980,1380)"/>
     <wire from="(1980,1080)" to="(2030,1080)"/>
-    <wire from="(1980,1380)" to="(2180,1380)"/>
     <wire from="(1990,2110)" to="(1990,2120)"/>
     <wire from="(200,1580)" to="(810,1580)"/>
     <wire from="(200,1600)" to="(910,1600)"/>
@@ -1031,22 +1028,16 @@ d7 ce b7 ce ce c8
     <wire from="(2130,2240)" to="(2150,2240)"/>
     <wire from="(2150,1710)" to="(2150,1770)"/>
     <wire from="(2160,1560)" to="(2160,1660)"/>
-    <wire from="(2160,1560)" to="(2200,1560)"/>
     <wire from="(2160,1700)" to="(2210,1700)"/>
     <wire from="(2160,2250)" to="(2160,2350)"/>
     <wire from="(2170,2240)" to="(2220,2240)"/>
-    <wire from="(2180,1380)" to="(2180,1590)"/>
-    <wire from="(2180,1590)" to="(2210,1590)"/>
-    <wire from="(2210,1570)" to="(2210,1590)"/>
     <wire from="(2210,1700)" to="(2210,1820)"/>
     <wire from="(2210,1700)" to="(2240,1700)"/>
     <wire from="(2210,1870)" to="(2210,1950)"/>
     <wire from="(2210,1870)" to="(2240,1870)"/>
     <wire from="(2210,2090)" to="(2210,2180)"/>
     <wire from="(2210,2090)" to="(2250,2090)"/>
-    <wire from="(2220,1560)" to="(2240,1560)"/>
     <wire from="(2220,2240)" to="(2220,2370)"/>
-    <wire from="(2240,1430)" to="(2240,1560)"/>
     <wire from="(2240,1640)" to="(2240,1700)"/>
     <wire from="(2240,1790)" to="(2240,1870)"/>
     <wire from="(2240,1870)" to="(3080,1870)"/>
@@ -3338,7 +3329,7 @@ d7 ce b7 ce ce c8
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="ALUUnaryOp"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="2048000.0"/>
+    <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(100,170)" name="Splitter">
       <a name="appear" val="right"/>
       <a name="fanout" val="4"/>
@@ -3395,10 +3386,10 @@ d7 ce b7 ce ce c8
       <a name="text" val="001 - Sub"/>
     </comp>
     <comp lib="8" loc="(150,285)" name="Text">
-      <a name="text" val="011 - Lsh"/>
+      <a name="text" val="011 - Rsh"/>
     </comp>
     <comp lib="8" loc="(150,305)" name="Text">
-      <a name="text" val="010 - Rsh"/>
+      <a name="text" val="010 - Lsh"/>
     </comp>
     <comp lib="8" loc="(150,325)" name="Text">
       <a name="text" val="100 - XOR"/>

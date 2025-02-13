@@ -61,8 +61,8 @@ Those operations only use stack registers and do not require any operands.
 
 * 11000000 - ADD. Adds value of `X` to the value of `Y` and stores result to the `X` register.
 * 11000001 - SUB. Subtracts value of `Y` from the value of `X` and stores result to the `X` register.
-* 11000010 - RSH. Shift value of `X` one position to the right and stores result to `X`.
-* 11000011 - LSH. Shift value of `X` one position to the left and stores result to `X`.
+* 11000011 - RSH. Shift value of `X` one position to the right and stores result to `X`.
+* 11000010 - LSH. Shift value of `X` one position to the left and stores result to `X`.
 * 11000100 - XOR. Applies bitwise XOR operation between registers `X` and `Y` and stores result to `X`.
 * 11000101 - NOT. Applies bitwise NOT operation to the register `X` and stores result to `X`.
 * 11000110 - AND. Applies bitwise AND operation between registers `X` and `Y` and stores result to `X`.
