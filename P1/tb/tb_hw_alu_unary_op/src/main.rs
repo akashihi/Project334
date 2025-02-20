@@ -162,13 +162,13 @@ fn main() -> ! {
 
     // Configure the syst timer to trigger an update every second
     let mut timer = timer::Timer::new(dp.TIM2, clocks, &mut rcc.apb1);
-    timer.start(1000.milliseconds());
+    timer.start(50.milliseconds());
 
     println!("Hello, world!");
 
     // Wait for the timer to trigger an update and change the state of the LED
     loop {
-        for out_value in (0u8..=255).rev() {
+        for out_value in (0u8..=254) {
             set_bit(out_value,7, &mut x_out_7);
             set_bit(out_value,6, &mut x_out_6);
             set_bit(out_value,5, &mut x_out_5);
